@@ -38,12 +38,8 @@
             border-radius: 50%;
             border: 5px solid white;
             margin: 0 auto 20px;
-            background: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            color: #666;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         h1 {
@@ -195,7 +191,7 @@
 <body>
     <div class="container">
         <header>
-            <div class="profile-photo">添加照片</div>
+            <div class="profile-photo" style="background-image: url('photo.png'); background-size: contain; background-position: center; background-repeat: no-repeat; background-color: white;"></div>
             <h1>朱正瑞</h1>
             <p class="subtitle">复旦大学 微电子学院 直博生</p>
             <p class="subtitle">Ph.D. Candidate in Microelectronics</p>
