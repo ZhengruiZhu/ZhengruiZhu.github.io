@@ -63,9 +63,41 @@
             margin: 0 15px;
             opacity: 0.9;
             transition: opacity 0.3s;
+            vertical-align: middle;
+            display: inline-block;
         }
 
         .contact-links a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .email-group {
+            display: inline-flex;
+            align-items: center;
+            text-align: left;
+            margin: 0 15px;
+            vertical-align: middle;
+            gap: 8px;
+        }
+
+        .email-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .email-list a {
+            display: block;
+            margin: 0;
+            line-height: 1.4;
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .email-list a:hover {
             opacity: 1;
             text-decoration: underline;
         }
@@ -196,11 +228,15 @@
             <p class="subtitle">复旦大学 微电子学院 直博生</p>
             <p class="subtitle">Ph.D. Candidate in Microelectronics</p>
             <div class="contact-links">
-                <a href="zhuzr22@m.fudan.edu.cn">📧 zhuzr22@m.fudan.edu.cn</a>
+                <div class="email-group">
+                    <span>📧</span>
+                    <div class="email-list">
+                        <a href="mailto:zhuzr22@m.fudan.edu.cn">zhuzr22@m.fudan.edu.cn</a>
+                        <a href="mailto:zhengrui_zhu@outlook.com">zhengrui_zhu@outlook.com</a>
+                    </div>
+                </div>
                 <a href="https://github.com/yourusername" target="_blank">🔗 GitHub</a>
                 <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank">📚 Google Scholar</a>
-                <br>
-                <a href="zhengrui_zhu@outlook.com">📧 zhengrui_zhu@outlook.com</a>
             </div>
         </header>
 
@@ -346,7 +382,8 @@
                 <div class="info-grid">
                     <div class="info-item">
                         <strong>📧 邮箱</strong>
-                        <p>zhuzr22@m.fudan.edu.cn</p>
+                        <p>zhuzr22@m.fudan.edu.cn<br>
+                        zhengrui_zhu@outlook.com</p>
                     </div>
                     <div class="info-item">
                         <strong>📍 地址</strong>
