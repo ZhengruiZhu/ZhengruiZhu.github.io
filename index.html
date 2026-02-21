@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="lang-zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>朱正瑞 - 个人学术主页</title>
+    <title>朱正瑞 | 个人学术主页</title>
     <style>
         * {
             margin: 0;
@@ -11,402 +11,693 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --accent: #2c5fa8;
+            --text: #1a1a1a;
+            --muted: #64748b;
+            --border: #dce4ef;
+            --bg-alt: #f4f7fc;
+            --inner: 860px;
+            --pad: 24px;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f5f5f5;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+                         "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+            line-height: 1.65;
+            color: var(--text);
+            background: #fff;
+            font-size: 16px;
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
-
+        /* ── Header ── */
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 60px 40px;
-            text-align: center;
+            border-bottom: 1px solid var(--border);
+            padding: 52px 0 44px;
+            width: 100%;
+        }
+
+        .header-inner {
+            max-width: var(--inner);
+            margin: 0 auto;
+            padding: 0 var(--pad);
+            display: flex;
+            align-items: center;
+            gap: 36px;
         }
 
         .profile-photo {
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            border: 5px solid white;
-            margin: 0 auto 20px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            flex-shrink: 0;
+            border: 1px solid #b8cde4;
+            background: #edf2f8 center / contain no-repeat;
         }
 
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+        .header-info h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            color: #1e3d6e;
         }
 
-        .subtitle {
-            font-size: 1.2em;
-            opacity: 0.9;
-            margin-bottom: 5px;
+        .name-sub {
+            font-size: 1.05rem;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        .affiliation {
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.55;
         }
 
         .contact-links {
-            margin-top: 20px;
+            margin-top: 14px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 20px;
         }
 
         .contact-links a {
-            color: white;
+            color: var(--accent);
             text-decoration: none;
-            margin: 0 15px;
-            opacity: 0.9;
-            transition: opacity 0.3s;
-            vertical-align: middle;
-            display: inline-block;
+            font-size: 0.88rem;
         }
 
         .contact-links a:hover {
-            opacity: 1;
             text-decoration: underline;
         }
 
-        .email-group {
-            display: inline-flex;
-            align-items: center;
-            text-align: left;
-            margin: 0 15px;
-            vertical-align: middle;
-            gap: 8px;
+        /* ── Sticky Nav ── */
+        nav {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: 100%;
         }
 
-        .email-list {
+        .nav-inner {
+            max-width: var(--inner);
+            margin: 0 auto;
+            padding: 0 var(--pad);
             display: flex;
-            flex-direction: column;
-            gap: 2px;
+            align-items: stretch;
         }
 
-        .email-list a {
-            display: block;
-            margin: 0;
-            line-height: 1.4;
-            color: white;
+        .nav-links {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .nav-links::-webkit-scrollbar { display: none; }
+
+        nav a {
+            display: inline-block;
+            padding: 11px 13px;
+            font-size: 0.85rem;
+            color: var(--muted);
             text-decoration: none;
-            opacity: 0.9;
-            transition: opacity 0.3s;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+            transition: color 0.15s, border-color 0.15s;
         }
 
-        .email-list a:hover {
-            opacity: 1;
-            text-decoration: underline;
+        nav a:hover {
+            color: var(--text);
+            border-bottom-color: var(--accent);
         }
 
-        main {
-            padding: 40px;
+        /* ── Language switcher ── */
+        .lang-switcher {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            padding-left: 14px;
+            border-left: 1px solid var(--border);
         }
 
+        #lang-select {
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 3px 6px;
+            font-size: 0.8rem;
+            color: var(--muted);
+            background: #fff;
+            cursor: pointer;
+            outline: none;
+            font-family: inherit;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        #lang-select:hover,
+        #lang-select:focus {
+            border-color: var(--accent);
+            color: var(--text);
+        }
+
+        /* ── Sections ── */
         section {
-            margin-bottom: 40px;
+            width: 100%;
+            padding: 48px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:nth-child(even) {
+            background: var(--bg-alt);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-inner {
+            max-width: var(--inner);
+            margin: 0 auto;
+            padding: 0 var(--pad);
         }
 
         h2 {
-            color: #667eea;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .info-item {
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-        }
-
-        .info-item strong {
-            color: #667eea;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .education-item, .publication-item, .project-item, .award-item {
-            margin-bottom: 25px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .education-item:hover, .publication-item:hover, .project-item:hover, .award-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .item-title {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 8px;
-        }
-
-        .item-meta {
-            color: #666;
-            font-size: 0.95em;
-            margin-bottom: 10px;
-        }
-
-        .item-description {
-            color: #555;
-            line-height: 1.7;
-        }
-
-        .skills {
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #4a6897;
+            margin-bottom: 24px;
             display: flex;
-            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h2::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ── About ── */
+        .about-text {
+            color: #374151;
+            line-height: 1.8;
+            max-width: 680px;
+        }
+
+        /* ── Research ── */
+        .interest-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
             gap: 10px;
         }
 
-        .skill-tag {
-            background: #667eea;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9em;
+        .interest-item {
+            padding: 14px 16px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: #fff;
         }
 
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            font-size: 0.9em;
+        /* ZH mode: .cn is primary, .en is secondary */
+        html.lang-zh .interest-item .cn {
+            font-weight: 600;
+            font-size: 0.93rem;
+            margin-bottom: 3px;
         }
 
-        @media (max-width: 768px) {
-            header {
-                padding: 40px 20px;
-            }
-
-            h1 {
-                font-size: 2em;
-            }
-
-            main {
-                padding: 20px;
-            }
-
-            .contact-links a {
-                display: block;
-                margin: 10px 0;
-            }
+        html.lang-zh .interest-item .en {
+            color: var(--muted);
+            font-size: 0.8rem;
         }
 
-        ul {
-            margin-left: 20px;
-            margin-top: 10px;
+        /* EN mode: .en is primary, .cn is hidden */
+        html.lang-en .interest-item .en {
+            font-weight: 600;
+            font-size: 0.93rem;
         }
 
-        ul li {
+        html.lang-en .interest-item .cn {
+            display: none;
+        }
+
+        /* ── Education ── */
+        .edu-item {
+            display: flex;
+            gap: 24px;
+            padding-bottom: 28px;
+            margin-bottom: 28px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .edu-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .edu-year {
+            width: 110px;
+            flex-shrink: 0;
+            color: var(--muted);
+            font-size: 0.84rem;
+            padding-top: 3px;
+        }
+
+        .edu-body .degree {
+            font-weight: 600;
+            font-size: 0.97rem;
+            margin-bottom: 3px;
+        }
+
+        .edu-body .school {
+            color: var(--muted);
+            font-size: 0.88rem;
             margin-bottom: 8px;
+        }
+
+        .edu-body .courses {
+            font-size: 0.84rem;
+            color: #4b5563;
+            line-height: 1.6;
+        }
+
+        .edu-body .gpa {
+            display: inline-block;
+            margin-bottom: 4px;
+            font-size: 0.84rem;
+            color: #4b5563;
+        }
+
+        /* ── Publications ── */
+        .pub-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+
+        .pub-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .pub-num {
+            color: var(--muted);
+            font-size: 0.84rem;
+            padding-top: 2px;
+            min-width: 22px;
+            flex-shrink: 0;
+        }
+
+        .pub-body .title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+            line-height: 1.45;
+        }
+
+        .pub-body .authors {
+            color: var(--muted);
+            font-size: 0.85rem;
+            margin-bottom: 2px;
+        }
+
+        .pub-body .venue {
+            color: var(--muted);
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        /* ── Awards ── */
+        .award-list {
+            list-style: none;
+        }
+
+        .award-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 11px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.93rem;
+            gap: 12px;
+        }
+
+        .award-list li:last-child {
+            border-bottom: none;
+        }
+
+        .award-list .year {
+            color: var(--muted);
+            font-size: 0.84rem;
+            flex-shrink: 0;
+        }
+
+        /* ── Skills ── */
+        .skill-group {
+            margin-bottom: 20px;
+        }
+
+        .skill-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            padding: 5px 12px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #374151;
+            background: #fff;
+        }
+
+        /* ── Footer ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 28px var(--pad);
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.82rem;
+            line-height: 1.7;
+            width: 100%;
+            background: #f4f7fc;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            :root { --pad: 18px; }
+
+            header { padding: 36px 0 30px; }
+
+            .header-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 18px;
+            }
+
+            .profile-photo {
+                width: 88px;
+                height: 88px;
+            }
+
+            .header-info h1 { font-size: 1.6rem; }
+
+            section { padding: 36px 0; }
+
+            .edu-item {
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .edu-year { width: auto; }
+
+            .interest-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .award-list li {
+                flex-direction: column;
+                gap: 2px;
+            }
+
+            nav a {
+                padding: 10px 10px;
+                font-size: 0.8rem;
+            }
+
+            #lang-select {
+                font-size: 0.75rem;
+                padding: 2px 4px;
+            }
+
+            .lang-switcher {
+                padding-left: 10px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="profile-photo" style="background-image: url('photo.png'); background-size: contain; background-position: center; background-repeat: no-repeat; background-color: white;"></div>
-            <h1>朱正瑞</h1>
-            <p class="subtitle">复旦大学 微电子学院 直博生</p>
-            <p class="subtitle">Ph.D. Candidate in Microelectronics and Optoelectronics</p>
-            <div class="contact-links">
-                <div class="email-group">
-                    <span>📧</span>
-                    <div class="email-list">
-                        <a href="mailto:zhuzr22@m.fudan.edu.cn">zhuzr22@m.fudan.edu.cn</a>
-                        <a href="mailto:zhengrui_zhu@outlook.com">zhengrui_zhu@outlook.com</a>
-                    </div>
-                </div>
-                <a href="https://github.com/yourusername" target="_blank">🔗 GitHub</a>
-                <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank">📚 Google Scholar（暂无）</a>
+
+<header>
+    <div class="header-inner">
+        <div class="profile-photo" style="background-image: url('photo.png');"></div>
+        <div class="header-info">
+            <h1 data-zh="朱正瑞" data-en="Zhengrui Zhu">朱正瑞</h1>
+            <div class="name-sub" data-zh="Zhengrui Zhu" data-en="朱正瑞">Zhengrui Zhu</div>
+            <div class="affiliation"
+                 data-zh="直博生 · 复旦大学微电子学院<br>School of Microelectronics, Fudan University"
+                 data-en="Ph.D. Candidate · School of Microelectronics<br>Fudan University">
+                直博生 · 复旦大学微电子学院<br>School of Microelectronics, Fudan University
             </div>
-        </header>
-
-        <main>
-            <section id="about">
-                <h2>关于我 About Me</h2>
-                <p class="item-description">
-                    我是复旦大学微电子学院的一名直博生，主要研究方向包括片上集成光谱器件、集成电路设计、与嵌入式系统等。
-                </p>
-            </section>
-
-            <section id="research">
-                <h2>研究方向 Research Interests</h2>
-                <div class="info-grid">
-                    <div class="info-item">
-                        <strong>片上集成光谱器件</strong>
-                        <p>On-chip Integrated Spectral Device</p>
-                    </div>
-                    <div class="info-item">
-                        <strong>微电子器件</strong>
-                        <p>Microelectronic Devices</p>
-                    </div>
-                    <div class="info-item">
-                        <strong>嵌入式系统设计</strong>
-                        <p>Embedded System Design</p>
-                    </div>
-                    <div class="info-item">
-                        <strong>模拟/数字电路设计</strong>
-                        <p>Analog/Digital Circuits Design</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="education">
-                <h2>教育背景 Education</h2>
-                <div class="education-item">
-                    <div class="item-title">复旦大学 Fudan University</div>
-                    <div class="item-meta">微电子学院 | 直博 Ph.D. | 2022 - 至今</div>
-                    <div class="item-description">
-                        <ul>
-                            <li>专业：集成电路科学与技术</li>
-                            <li>GPA：3.53 / 4</li>
-                            <li>导师：许宁生 教授</li>
-                            <li>主要课程：模拟集成电路和系统设计(A)；数字集成电路设计(B+)；并行计算体系结构与程序设计(B+)；<br>&emsp;&emsp;&emsp;&emsp;&emsp;半导体器件物理(A)；</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="education-item">
-                    <div class="item-title">东南大学 Southeast University</div>
-                    <div class="item-meta">材料科学与工程学院（电子信息材料方向） | 本科 B.Eng. | 2018 - 2022</div>
-                    <div class="item-description">
-                        <ul>
-                            <li>专业：材料科学与工程</li>
-                            <li>GPA：4.1 / 4.8 | 排名: Top 5%</li>
-                            <li>主要课程：程序设计与算法语言(99)；电工电子技术(96)；传感原理与测试技术(98)；电子信息物理基础(99)；</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section id="publications">
-                <h2>学术成果 Publications</h2>
-
-                <div class="publication-item">
-                    <div class="item-title">[1] 论文标题 / Paper Title</div>
-                    <div class="item-meta">
-                        <strong>朱正瑞</strong>, 作者2, 作者3<br>
-                        <em>会议/期刊名称 (Conference/Journal Name)</em>, 年份
-                    </div>
-                    <div class="item-description">
-                        论文简介和主要贡献...
-                    </div>
-                </div>
-
-                <div class="publication-item">
-                    <div class="item-title">[2] 论文标题 / Paper Title</div>
-                    <div class="item-meta">
-                        作者1, <strong>朱正瑞</strong>, 作者3<br>
-                        <em>会议/期刊名称 (Conference/Journal Name)</em>, 年份
-                    </div>
-                    <div class="item-description">
-                        论文简介和主要贡献...
-                    </div>
-                </div>
-            </section>
-
-            <section id="projects">
-                <h2>项目经历 Projects</h2>
-
-                <div class="project-item">
-                    <div class="item-title">项目名称 / Project Name</div>
-                    <div class="item-meta">项目负责人 | 2023.01 - 2024.06</div>
-                    <div class="item-description">
-                        <p><strong>项目描述：</strong>详细描述项目背景和目标...</p>
-                        <p><strong>主要工作：</strong></p>
-                        <ul>
-                            <li>完成了XXX功能的设计与实现</li>
-                            <li>优化了XXX性能，提升XX%</li>
-                            <li>发表论文X篇</li>
-                        </ul>
-                        <p><strong>技术栈：</strong>Cadence, HSPICE, Verilog, Python</p>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="item-title">项目名称 / Project Name</div>
-                    <div class="item-meta">项目成员 | 2022.06 - 2022.12</div>
-                    <div class="item-description">
-                        <p><strong>项目描述：</strong>详细描述项目背景和目标...</p>
-                        <p><strong>主要贡献：</strong>负责XXX模块的设计与验证...</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="awards">
-                <h2>获奖荣誉 Awards & Honors</h2>
-
-                <div class="award-item">
-                    <div class="item-title">国家奖学金 National Scholarship</div>
-                    <div class="item-meta">2024年</div>
-                </div>
-
-                <div class="award-item">
-                    <div class="item-title">复旦大学优秀研究生 Outstanding Graduate Student</div>
-                    <div class="item-meta">2023年</div>
-                </div>
-
-                <div class="award-item">
-                    <div class="item-title">XXX竞赛一等奖 First Prize in XXX Competition</div>
-                    <div class="item-meta">2022年</div>
-                </div>
-            </section>
-
-            <section id="skills">
-                <h2>专业技能 Skills</h2>
-                <div class="skills">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">C/C++</span>
-                    <span class="skill-tag">MATLAB</span>
-                    <span class="skill-tag">Cadence Virtuoso</span>
-                    <span class="skill-tag">Verilog HDL</span>
-                </div>
-            </section>
-
-            <section id="contact">
-                <h2>联系方式 Contact</h2>
-                <div class="info-grid">
-                    <div class="info-item">
-                        <strong>📧 邮箱</strong>
-                        <p>zhuzr22@m.fudan.edu.cn<br>
-                        zhengrui_zhu@outlook.com</p>
-                    </div>
-                    <div class="info-item">
-                        <strong>📍 地址</strong>
-                        <p>上海市杨浦区淞沪路2005号<br>复旦大学集成电路与微纳电子创新学院</p>
-                    </div>
-                    <div class="info-item">
-                        <strong>🔗 主页</strong>
-                        <p><a href="https://github.com/ZhengruiZhu">GitHub</a> |
-                           <a href="https://scholar.google.com">Google Scholar</a></p>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <p>&copy; 2026 朱正瑞. All Rights Reserved.</p>
-            <p>Last Updated: 2026年2月</p>
-        </footer>
+            <div class="contact-links">
+                <a href="mailto:zhuzr22@m.fudan.edu.cn">zhuzr22@m.fudan.edu.cn</a>
+                <a href="mailto:zhengrui_zhu@outlook.com">zhengrui_zhu@outlook.com</a>
+                <a href="https://github.com/ZhengruiZhu" target="_blank">GitHub</a>
+                <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank">Google Scholar</a>
+            </div>
+        </div>
     </div>
+</header>
+
+<nav>
+    <div class="nav-inner">
+        <div class="nav-links">
+            <a href="#about"        data-zh="关于我"   data-en="About">关于我</a>
+            <a href="#research"     data-zh="研究方向" data-en="Research">研究方向</a>
+            <a href="#education"    data-zh="教育背景" data-en="Education">教育背景</a>
+            <a href="#publications" data-zh="学术成果" data-en="Publications">学术成果</a>
+            <a href="#awards"       data-zh="获奖荣誉" data-en="Awards">获奖荣誉</a>
+            <a href="#skills"       data-zh="专业技能" data-en="Skills">专业技能</a>
+        </div>
+        <div class="lang-switcher">
+            <select id="lang-select" onchange="setLang(this.value)" aria-label="Language">
+                <option value="zh">中文</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <section id="about">
+        <div class="section-inner">
+            <h2 data-zh="关于我" data-en="About">关于我</h2>
+            <p class="about-text"
+               data-zh="我是复旦大学微电子学院的一名直博生，主要研究方向包括片上集成光谱器件、集成电路设计与嵌入式系统等。导师为许宁生教授。"
+               data-en="I am a direct Ph.D. candidate at the School of Microelectronics, Fudan University. My research focuses on on-chip integrated spectral devices, integrated circuit design, and embedded systems. My advisor is Prof. Ningsheng Xu.">
+                我是复旦大学微电子学院的一名直博生，主要研究方向包括片上集成光谱器件、集成电路设计与嵌入式系统等。导师为许宁生教授。
+            </p>
+        </div>
+    </section>
+
+    <section id="research">
+        <div class="section-inner">
+            <h2 data-zh="研究方向" data-en="Research Interests">研究方向</h2>
+            <div class="interest-grid">
+                <div class="interest-item">
+                    <div class="cn">片上集成光谱器件</div>
+                    <div class="en">On-chip Integrated Spectral Device</div>
+                </div>
+                <div class="interest-item">
+                    <div class="cn">微电子器件</div>
+                    <div class="en">Microelectronic Devices</div>
+                </div>
+                <div class="interest-item">
+                    <div class="cn">嵌入式系统设计</div>
+                    <div class="en">Embedded System Design</div>
+                </div>
+                <div class="interest-item">
+                    <div class="cn">模拟/数字电路设计</div>
+                    <div class="en">Analog/Digital Circuit Design</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="section-inner">
+            <h2 data-zh="教育背景" data-en="Education">教育背景</h2>
+            <div class="edu-item">
+                <div class="edu-year" data-zh="2022 — 至今" data-en="2022 — present">2022 — 至今</div>
+                <div class="edu-body">
+                    <div class="degree"
+                         data-zh="直博 Ph.D. · 集成电路科学与技术"
+                         data-en="Ph.D. (Direct) · Integrated Circuit Science and Engineering">
+                        直博 Ph.D. · 集成电路科学与技术
+                    </div>
+                    <div class="school"
+                         data-zh="复旦大学 微电子学院 · 导师：许宁生 教授"
+                         data-en="School of Microelectronics, Fudan University · Advisor: Prof. Ningsheng Xu">
+                        复旦大学 微电子学院 · 导师：许宁生 教授
+                    </div>
+                    <div class="gpa">GPA 3.53 / 4</div>
+                    <div class="courses"
+                         data-zh="模拟集成电路和系统设计 (A) · 数字集成电路设计 (B+) · 并行计算体系结构与程序设计 (B+) · 半导体器件物理 (A)"
+                         data-en="Analog Integrated Circuits and System Design (A) · Digital Integrated Circuit Design (B+) · Parallel Computing Architecture and Programming (B+) · Semiconductor Device Physics (A)">
+                        模拟集成电路和系统设计 (A) · 数字集成电路设计 (B+) · 并行计算体系结构与程序设计 (B+) · 半导体器件物理 (A)
+                    </div>
+                </div>
+            </div>
+            <div class="edu-item">
+                <div class="edu-year">2018 — 2022</div>
+                <div class="edu-body">
+                    <div class="degree"
+                         data-zh="本科 B.Eng. · 材料科学与工程（电子信息材料）"
+                         data-en="B.Eng. · Materials Science and Engineering (Electronic Information Materials)">
+                        本科 B.Eng. · 材料科学与工程（电子信息材料）
+                    </div>
+                    <div class="school"
+                         data-zh="东南大学 材料科学与工程学院"
+                         data-en="School of Materials Science and Engineering, Southeast University">
+                        东南大学 材料科学与工程学院
+                    </div>
+                    <div class="gpa">GPA 4.1 / 4.8 · Top 5%</div>
+                    <div class="courses"
+                         data-zh="程序设计与算法语言 (99) · 电工电子技术 (96) · 传感原理与测试技术 (98) · 电子信息物理基础 (99)"
+                         data-en="Programming and Algorithm Languages (99) · Electrical and Electronic Technology (96) · Sensing Principles and Test Technology (98) · Fundamentals of Electronic Information Physics (99)">
+                        程序设计与算法语言 (99) · 电工电子技术 (96) · 传感原理与测试技术 (98) · 电子信息物理基础 (99)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="publications">
+        <div class="section-inner">
+            <h2 data-zh="学术成果" data-en="Publications">学术成果</h2>
+            <div class="pub-item">
+                <div class="pub-num">[1]</div>
+                <div class="pub-body">
+                    <div class="title"
+                         data-zh="论文标题 / Paper Title"
+                         data-en="Paper Title">论文标题 / Paper Title</div>
+                    <div class="authors"
+                         data-zh="<strong>朱正瑞</strong>, 作者2, 作者3"
+                         data-en="<strong>Zhengrui Zhu</strong>, Author 2, Author 3">
+                        <strong>朱正瑞</strong>, 作者2, 作者3
+                    </div>
+                    <div class="venue"
+                         data-zh="会议/期刊名称, 年份"
+                         data-en="Conference/Journal Name, Year">会议/期刊名称, 年份</div>
+                </div>
+            </div>
+            <div class="pub-item">
+                <div class="pub-num">[2]</div>
+                <div class="pub-body">
+                    <div class="title"
+                         data-zh="论文标题 / Paper Title"
+                         data-en="Paper Title">论文标题 / Paper Title</div>
+                    <div class="authors"
+                         data-zh="作者1, <strong>朱正瑞</strong>, 作者3"
+                         data-en="Author 1, <strong>Zhengrui Zhu</strong>, Author 3">
+                        作者1, <strong>朱正瑞</strong>, 作者3
+                    </div>
+                    <div class="venue"
+                         data-zh="会议/期刊名称, 年份"
+                         data-en="Conference/Journal Name, Year">会议/期刊名称, 年份</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="awards">
+        <div class="section-inner">
+            <h2 data-zh="获奖荣誉" data-en="Awards &amp; Honors">获奖荣誉</h2>
+            <ul class="award-list">
+                <li>
+                    <span data-zh="国家奖学金" data-en="National Scholarship">国家奖学金</span>
+                    <span class="year">2024</span>
+                </li>
+                <li>
+                    <span data-zh="复旦大学优秀研究生" data-en="Outstanding Graduate Student, Fudan University">复旦大学优秀研究生</span>
+                    <span class="year">2023</span>
+                </li>
+                <li>
+                    <span data-zh="XXX竞赛一等奖" data-en="First Prize in XXX Competition">XXX竞赛一等奖</span>
+                    <span class="year">2022</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="section-inner">
+            <h2 data-zh="专业技能" data-en="Skills">专业技能</h2>
+            <div class="skill-group">
+                <div class="skill-label" data-zh="编程语言" data-en="Programming">编程语言</div>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">C/C++</span>
+                    <span class="tag">MATLAB</span>
+                    <span class="tag">Verilog HDL</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <div class="skill-label" data-zh="EDA 工具" data-en="EDA &amp; Tools">EDA 工具</div>
+                <div class="tags">
+                    <span class="tag">Cadence Virtuoso</span>
+                    <span class="tag">HSPICE</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p data-zh="朱正瑞 · 复旦大学微电子学院 · 上海，中国"
+       data-en="Zhengrui Zhu · School of Microelectronics, Fudan University · Shanghai, China">
+        朱正瑞 · 复旦大学微电子学院 · 上海，中国
+    </p>
+    <p data-zh="最后更新：2026年2月" data-en="Last updated: February 2026">最后更新：2026年2月</p>
+</footer>
+
+<script>
+    function setLang(lang) {
+        var html = document.documentElement;
+        html.lang = lang === 'zh' ? 'zh-CN' : 'en';
+        html.className = 'lang-' + lang;
+
+        document.querySelectorAll('[data-zh]').forEach(function(el) {
+            el.innerHTML = el.getAttribute('data-' + lang);
+        });
+
+        document.title = lang === 'zh'
+            ? '朱正瑞 | 个人学术主页'
+            : 'Zhengrui Zhu | Academic Homepage';
+
+        var sel = document.getElementById('lang-select');
+        if (sel) sel.value = lang;
+
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+    }
+
+    (function () {
+        var saved = 'zh';
+        try { saved = localStorage.getItem('lang') || 'zh'; } catch (e) {}
+        setLang(saved);
+    })();
+</script>
+
 </body>
 </html>
