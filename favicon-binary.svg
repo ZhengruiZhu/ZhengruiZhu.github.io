@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" shape-rendering="crispEdges">
+  <!-- Dark background -->
+  <rect width="32" height="32" fill="#0d1117"/>
+
+  <!--
+    4 columns, each 6px wide, with 2px gaps (x=1,9,17,25).
+    8 rows of bits, each 3px tall, with 1px gaps (y=1,5,9,13,17,21,25,29).
+
+    Columns encode initials "ZR" (Z=90=01011010, R=82=01010010),
+    repeated twice — bright in front, dimmer behind.
+
+    Bit order: MSB (y=1) → LSB (y=29).
+  -->
+
+  <!-- Column 1 · Z = 01011010 · bright green #39dd5e -->
+  <rect x="1" y="1"  width="6" height="3" fill="#0f3a1e"/><!-- 0 -->
+  <rect x="1" y="5"  width="6" height="3" fill="#39dd5e"/><!-- 1 -->
+  <rect x="1" y="9"  width="6" height="3" fill="#0f3a1e"/><!-- 0 -->
+  <rect x="1" y="13" width="6" height="3" fill="#39dd5e"/><!-- 1 -->
+  <rect x="1" y="17" width="6" height="3" fill="#39dd5e"/><!-- 1 -->
+  <rect x="1" y="21" width="6" height="3" fill="#0f3a1e"/><!-- 0 -->
+  <rect x="1" y="25" width="6" height="3" fill="#39dd5e"/><!-- 1 -->
+  <rect x="1" y="29" width="6" height="3" fill="#0f3a1e"/><!-- 0 -->
+
+  <!-- Column 2 · R = 01010010 · bright green #39dd5e -->
+  <rect x="9" y="1"  width="6" height="3" fill="#0f3a1e"/>
+  <rect x="9" y="5"  width="6" height="3" fill="#39dd5e"/>
+  <rect x="9" y="9"  width="6" height="3" fill="#0f3a1e"/>
+  <rect x="9" y="13" width="6" height="3" fill="#39dd5e"/>
+  <rect x="9" y="17" width="6" height="3" fill="#0f3a1e"/>
+  <rect x="9" y="21" width="6" height="3" fill="#0f3a1e"/>
+  <rect x="9" y="25" width="6" height="3" fill="#39dd5e"/>
+  <rect x="9" y="29" width="6" height="3" fill="#0f3a1e"/>
+
+  <!-- Column 3 · Z = 01011010 · dimmer #1e7a3a -->
+  <rect x="17" y="1"  width="6" height="3" fill="#0f3a1e"/>
+  <rect x="17" y="5"  width="6" height="3" fill="#1e7a3a"/>
+  <rect x="17" y="9"  width="6" height="3" fill="#0f3a1e"/>
+  <rect x="17" y="13" width="6" height="3" fill="#1e7a3a"/>
+  <rect x="17" y="17" width="6" height="3" fill="#1e7a3a"/>
+  <rect x="17" y="21" width="6" height="3" fill="#0f3a1e"/>
+  <rect x="17" y="25" width="6" height="3" fill="#1e7a3a"/>
+  <rect x="17" y="29" width="6" height="3" fill="#0f3a1e"/>
+
+  <!-- Column 4 · R = 01010010 · dimmer #1e7a3a -->
+  <rect x="25" y="1"  width="6" height="3" fill="#0f3a1e"/>
+  <rect x="25" y="5"  width="6" height="3" fill="#1e7a3a"/>
+  <rect x="25" y="9"  width="6" height="3" fill="#0f3a1e"/>
+  <rect x="25" y="13" width="6" height="3" fill="#1e7a3a"/>
+  <rect x="25" y="17" width="6" height="3" fill="#0f3a1e"/>
+  <rect x="25" y="21" width="6" height="3" fill="#0f3a1e"/>
+  <rect x="25" y="25" width="6" height="3" fill="#1e7a3a"/>
+  <rect x="25" y="29" width="6" height="3" fill="#0f3a1e"/>
+</svg>

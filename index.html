@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>朱正瑞 | 个人学术主页</title>
+    <!-- Favicon: binary/geeky (active) — swap href to "favicon-pixel.svg" for pixel art avatar -->
+    <link rel="icon" type="image/svg+xml" href="favicon-pixel.svg">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
     <style>
         * {
             margin: 0;
@@ -296,6 +299,80 @@
             color: #4b5563;
         }
 
+        /* ── Work Experience ── */
+        /* timeline layout reuses .edu-item / .edu-year */
+        .exp-role {
+            font-weight: 600;
+            font-size: 0.97rem;
+            margin-bottom: 3px;
+        }
+
+        .exp-org {
+            color: var(--muted);
+            font-size: 0.88rem;
+            margin-bottom: 6px;
+        }
+
+        .exp-desc {
+            font-size: 0.84rem;
+            color: #4b5563;
+            line-height: 1.65;
+        }
+
+        /* ── Projects ── */
+        .proj-item {
+            padding-bottom: 24px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .proj-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .proj-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
+
+        .proj-title {
+            font-weight: 600;
+            font-size: 0.97rem;
+        }
+
+        .proj-date {
+            color: var(--muted);
+            font-size: 0.84rem;
+            flex-shrink: 0;
+        }
+
+        .proj-desc {
+            font-size: 0.88rem;
+            color: #374151;
+            line-height: 1.65;
+            margin-bottom: 10px;
+        }
+
+        .proj-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .proj-tag {
+            padding: 2px 10px;
+            border: 1px solid #c4d4e8;
+            border-radius: 3px;
+            font-size: 0.78rem;
+            color: var(--accent);
+            background: #eef3fb;
+        }
+
         /* ── Publications ── */
         .pub-item {
             display: flex;
@@ -441,6 +518,11 @@
                 gap: 2px;
             }
 
+            .proj-header {
+                flex-direction: column;
+                gap: 2px;
+            }
+
             nav a {
                 padding: 10px 10px;
                 font-size: 0.8rem;
@@ -485,12 +567,14 @@
             <a href="#about"        data-zh="关于我"   data-en="About">关于我</a>
             <a href="#research"     data-zh="研究方向" data-en="Research">研究方向</a>
             <a href="#education"    data-zh="教育背景" data-en="Education">教育背景</a>
+            <a href="#experience"   data-zh="工作经历" data-en="Experience">工作经历</a>
+            <a href="#projects"     data-zh="项目经历" data-en="Projects">项目经历</a>
             <a href="#publications" data-zh="学术成果" data-en="Publications">学术成果</a>
             <a href="#awards"       data-zh="获奖荣誉" data-en="Awards">获奖荣誉</a>
             <a href="#skills"       data-zh="专业技能" data-en="Skills">专业技能</a>
         </div>
         <div class="lang-switcher">
-            <select id="lang-select" onchange="setLang(this.value)" aria-label="Language">
+            <select id="lang-select" onchange="setLang(this.value)" aria-label="Language" autocomplete="off">
                 <option value="zh">中文</option>
                 <option value="en">English</option>
             </select>
@@ -577,6 +661,102 @@
                          data-en="Programming and Algorithm Languages (99) · Electrical and Electronic Technology (96) · Sensing Principles and Test Technology (98) · Fundamentals of Electronic Information Physics (99)">
                         程序设计与算法语言 (99) · 电工电子技术 (96) · 传感原理与测试技术 (98) · 电子信息物理基础 (99)
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="section-inner">
+            <h2 data-zh="工作经历" data-en="Work Experience">工作经历</h2>
+
+            <div class="edu-item">
+                <div class="edu-year" data-zh="2024年夏" data-en="Summer 2024">2024年夏</div>
+                <div class="edu-body">
+                    <div class="exp-role"
+                         data-zh="研究实习生"
+                         data-en="Research Intern">
+                        研究实习生
+                    </div>
+                    <div class="exp-org"
+                         data-zh="[公司/实验室名称] · [城市]"
+                         data-en="[Company / Lab Name] · [City]">
+                        [公司/实验室名称] · [城市]
+                    </div>
+                    <div class="exp-desc"
+                         data-zh="负责……（请填入具体工作内容）"
+                         data-en="Responsible for … (please fill in details)">
+                        负责……（请填入具体工作内容）
+                    </div>
+                </div>
+            </div>
+
+            <div class="edu-item">
+                <div class="edu-year" data-zh="2023年夏" data-en="Summer 2023">2023年夏</div>
+                <div class="edu-body">
+                    <div class="exp-role"
+                         data-zh="工程实习生"
+                         data-en="Engineering Intern">
+                        工程实习生
+                    </div>
+                    <div class="exp-org"
+                         data-zh="[公司名称] · [城市]"
+                         data-en="[Company Name] · [City]">
+                        [公司名称] · [城市]
+                    </div>
+                    <div class="exp-desc"
+                         data-zh="负责……（请填入具体工作内容）"
+                         data-en="Responsible for … (please fill in details)">
+                        负责……（请填入具体工作内容）
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="section-inner">
+            <h2 data-zh="项目经历" data-en="Project Experience">项目经历</h2>
+
+            <div class="proj-item">
+                <div class="proj-header">
+                    <div class="proj-title"
+                         data-zh="[项目名称一]"
+                         data-en="[Project Title One]">
+                        [项目名称一]
+                    </div>
+                    <div class="proj-date" data-zh="2024年" data-en="2024">2024年</div>
+                </div>
+                <div class="proj-desc"
+                     data-zh="项目简介……（请填入项目背景、目标与成果）"
+                     data-en="Project description … (please fill in background, objectives, and outcomes)">
+                    项目简介……（请填入项目背景、目标与成果）
+                </div>
+                <div class="proj-tags">
+                    <span class="proj-tag">Python</span>
+                    <span class="proj-tag">Cadence</span>
+                    <span class="proj-tag">HSPICE</span>
+                </div>
+            </div>
+
+            <div class="proj-item">
+                <div class="proj-header">
+                    <div class="proj-title"
+                         data-zh="[项目名称二]"
+                         data-en="[Project Title Two]">
+                        [项目名称二]
+                    </div>
+                    <div class="proj-date" data-zh="2023年" data-en="2023">2023年</div>
+                </div>
+                <div class="proj-desc"
+                     data-zh="项目简介……（请填入项目背景、目标与成果）"
+                     data-en="Project description … (please fill in background, objectives, and outcomes)">
+                    项目简介……（请填入项目背景、目标与成果）
+                </div>
+                <div class="proj-tags">
+                    <span class="proj-tag">C/C++</span>
+                    <span class="proj-tag">Verilog HDL</span>
+                    <span class="proj-tag">FPGA</span>
                 </div>
             </div>
         </div>
@@ -687,15 +867,9 @@
 
         var sel = document.getElementById('lang-select');
         if (sel) sel.value = lang;
-
-        try { localStorage.setItem('lang', lang); } catch (e) {}
     }
 
-    (function () {
-        var saved = 'zh';
-        try { saved = localStorage.getItem('lang') || 'zh'; } catch (e) {}
-        setLang(saved);
-    })();
+    window.addEventListener('load', function () { setLang('en'); });
 </script>
 
 </body>
